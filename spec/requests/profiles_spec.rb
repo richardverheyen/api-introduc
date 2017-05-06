@@ -52,13 +52,13 @@ RSpec.describe 'Profiles API', type: :request do
   # Test suite for POST /profiles
   describe 'POST /profiles' do
     # valid payload
-    let(:valid_attributes) { { name: 'Richard Verheyen', lat: '12.1234567', long:'22.1234567' } }
+    let(:valid_attributes) { { user: 'Richard Verheyen' , lat: '1', long: '2' } }
 
     context 'when the request is valid' do
       before { post '/profiles', params: valid_attributes }
 
       it 'creates a profile' do
-        expect(json['name']).to eq('Richard Verheyen')
+        expect(json['user']).to eq('Richard Verheyen')
       end
 
       it 'returns status code 201' do
@@ -67,7 +67,7 @@ RSpec.describe 'Profiles API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/profiles', params: { name: 'Foobar' } }
+      before { post '/profiles', params: { user: 'Foobar' } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -82,7 +82,7 @@ RSpec.describe 'Profiles API', type: :request do
 
   # Test suite for PUT /profiles/:id
   describe 'PUT /profiles/:id' do
-    let(:valid_attributes) { { name: 'Jan Werkhoven' } }
+    let(:valid_attributes) { { user: 'Jan Werkhoven' } }
 
     context 'when the record exists' do
       before { put "/profiles/#{profile_id}", params: valid_attributes }
