@@ -4,6 +4,8 @@ class CreateProfiles < ActiveRecord::Migration[5.1]
       t.string :user
       t.float :lat
       t.float :long
+      t.string :image
+      t.string :tagline
 
       t.timestamps
     end
