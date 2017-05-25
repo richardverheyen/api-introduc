@@ -1,6 +1,6 @@
-class CreateProfiles < ActiveRecord::Migration[5.1]
+class CreateUsers < ActiveRecord::Migration[5.1]
   def change
-    create_table :profiles do |t|
+    create_table :users do |t|
       t.string :user
       t.float :lat
       t.float :long
