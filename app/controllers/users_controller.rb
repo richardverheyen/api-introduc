@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
   def user_params
     # whitelist params
-    params.permit(:name, :lat, :long)
+    params.permit(:name, :lat, :long, :image, :tagline)
   end
 
   def set_user

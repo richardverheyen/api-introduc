@@ -17,7 +17,7 @@ FactoryGirl.define do
     name { Faker::StarWars.character }
     lat { Faker::Number.number(2) }
     long { Faker::Number.number(2) }
-    image { Faker::File.file_name('/img/') }
-    tagline { Faker::RickAndMorty.quote }
+    image { Faker::Lorem.word }
+    tagline { Faker::Lorem.sentence }
   end
 end

@@ -52,7 +52,7 @@ RSpec.describe 'Users API', type: :request do
   # Test suite for POST /users
   describe 'POST /users' do
     # valid payload
-    let(:valid_attributes) { { name: 'Richard Verheyen' , lat: '1', long: '2' } }
+    let(:valid_attributes) { { name: 'Richard Verheyen' , lat: '1', long: '2', image: '/img/richard.jpg', tagline: 'Lets get schwifty' } }
 
     context 'when the request is valid' do
       before { post '/users', params: valid_attributes }
@@ -75,7 +75,7 @@ RSpec.describe 'Users API', type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match("{\"message\":\"Validation failed: Lat can't be blank, Long can't be blank\"}")
+          .to match("{\"message\":\"Validation failed: Lat can't be blank, Long can't be blank, Image can't be blank, Tagline can't be blank\"}")
       end
     end
   end
