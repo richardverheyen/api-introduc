@@ -12,7 +12,7 @@
 
 FactoryGirl.define do
   factory :user do
-    user { Faker::StarWars.character }
+    name { Faker::StarWars.character }
     lat { Faker::Number.number(2) }
     long { Faker::Number.number(2) }
   end

@@ -14,5 +14,5 @@ class User < ApplicationRecord
   # model association
 
   # validations
-  validates_presence_of :user, :lat, :long
+  validates_presence_of :name, :lat, :long
 end

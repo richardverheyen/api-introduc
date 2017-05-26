@@ -52,13 +52,13 @@ RSpec.describe 'Users API', type: :request do
   # Test suite for POST /users
   describe 'POST /users' do
     # valid payload
-    let(:valid_attributes) { { user: 'Richard Verheyen' , lat: '1', long: '2' } }
+    let(:valid_attributes) { { name: 'Richard Verheyen' , lat: '1', long: '2' } }
 
     context 'when the request is valid' do
       before { post '/users', params: valid_attributes }
 
       it 'creates a user' do
-        expect(json['user']).to eq('Richard Verheyen')
+        expect(json['name']).to eq('Richard Verheyen')
       end
 
       it 'returns status code 201' do
@@ -67,7 +67,7 @@ RSpec.describe 'Users API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/users', params: { user: 'Foobar' } }
+      before { post '/users', params: { name: 'Foobar' } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -75,14 +75,14 @@ RSpec.describe 'Users API', type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match(/Validation failed: Created by can't be blank/)
+          .to match("{\"message\":\"Validation failed: Lat can't be blank, Long can't be blank\"}")
       end
     end
   end
 
   # Test suite for PUT /users/:id
   describe 'PUT /users/:id' do
-    let(:valid_attributes) { { user: 'Jan Werkhoven' } }
+    let(:valid_attributes) { { name: 'Jan Werkhoven' } }
 
     context 'when the record exists' do
       before { put "/users/#{user_id}", params: valid_attributes }
