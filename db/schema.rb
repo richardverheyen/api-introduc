@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 20170505181808) do
     t.string "user"
     t.float "lat"
     t.float "long"
+    t.string "image"
+    t.string "tagline"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
