@@ -15,7 +15,9 @@ class UsersController < ApplicationController
 
   # GET /users/:id
   def show
-    json_response(@user)
+    # json_response(@user)
+    # render :json => {:type => "profile", {:attributes => @user.image, @user.tagline}}
+    render :json => {:type => "profile",:id => @user.id, :attributes => {:image => @user.image, :tagline => @user.tagline}}
   end
 
   # PUT /users/:id
