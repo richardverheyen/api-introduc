@@ -3,9 +3,11 @@
 # Table name: users
 #
 #  id         :integer          not null, primary key
-#  user       :string
+#  name       :string
 #  lat        :float
 #  long       :float
+#  image      :string
+#  tagline    :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -15,5 +17,7 @@ FactoryGirl.define do
     name { Faker::StarWars.character }
     lat { Faker::Number.number(2) }
     long { Faker::Number.number(2) }
+    image { Faker::File.file_name('/img/') }
+    tagline { Faker::RickAndMorty.quote }
   end
 end
