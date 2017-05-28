@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170505181808) do
 
-  create_table "users", force: :cascade do |t|
+  create_table "profiles", force: :cascade do |t|
     t.string "name"
     t.float "lat"
     t.float "long"

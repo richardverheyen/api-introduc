@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: profiles
 #
 #  id         :integer          not null, primary key
 #  name       :string
@@ -12,7 +12,7 @@
 #  updated_at :datetime         not null
 #
 
-class User < ApplicationRecord
+class Profile < ApplicationRecord
   # model association
 
   # validations

@@ -1,16 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe 'Users API', type: :request do
+RSpec.describe 'Profiles API', type: :request do
   # initialize test data
-  let!(:users) { create_list(:user, 10) }
-  let(:user_id) { users.first.id }
+  let!(:profiles) { create_list(:profile, 10) }
+  let(:profile_id) { profiles.first.id }
 
-  # Test suite for GET /users
-  describe 'GET /users' do
+  # Test suite for GET /profiles
+  describe 'GET /profiles' do
     # make HTTP get request before each example
-    before { get '/users' }
+    before { get '/profiles' }
 
-    it 'returns users' do
+    it 'returns profiles' do
       # Note `json` is a custom helper to parse JSON responses
       expect(json).not_to be_empty
       expect(json.size).to eq(10)
@@ -21,14 +21,14 @@ RSpec.describe 'Users API', type: :request do
     end
   end
 
-  # Test suite for GET /users/:id
-  describe 'GET /users/:id' do
-    before { get "/users/#{user_id}" }
+  # Test suite for GET /profiles/:id
+  describe 'GET /profiles/:id' do
+    before { get "/profiles/#{profile_id}" }
 
     context 'when the record exists' do
-      it 'returns the user' do
+      it 'returns the profile' do
         expect(json).not_to be_empty
-        expect(json['id']).to eq(user_id)
+        expect(json['id']).to eq(profile_id)
       end
 
       it 'returns status code 200' do
@@ -37,27 +37,27 @@ RSpec.describe 'Users API', type: :request do
     end
 
     context 'when the record does not exist' do
-      let(:user_id) { 100 }
+      let(:profile_id) { 100 }
 
       it 'returns status code 404' do
         expect(response).to have_http_status(404)
       end
 
       it 'returns a not found message' do
-        expect(response.body).to match(/Couldn't find User/)
+        expect(response.body).to match(/Couldn't find Profile/)
       end
     end
   end
 
-  # Test suite for POST /users
-  describe 'POST /users' do
+  # Test suite for POST /profiles
+  describe 'POST /profiles' do
     # valid payload
     let(:valid_attributes) { { name: 'Richard Verheyen' , lat: '1', long: '2', image: '/img/richard.jpg', tagline: 'Lets get schwifty' } }
 
     context 'when the request is valid' do
-      before { post '/users', params: valid_attributes }
+      before { post '/profiles', params: valid_attributes }
 
-      it 'creates a user' do
+      it 'creates a profile' do
         expect(json['name']).to eq('Richard Verheyen')
       end
 
@@ -67,7 +67,7 @@ RSpec.describe 'Users API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/users', params: { name: 'Foobar' } }
+      before { post '/profiles', params: { name: 'Foobar' } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -80,12 +80,12 @@ RSpec.describe 'Users API', type: :request do
     end
   end
 
-  # Test suite for PUT /users/:id
-  describe 'PUT /users/:id' do
+  # Test suite for PUT /profiles/:id
+  describe 'PUT /profiles/:id' do
     let(:valid_attributes) { { name: 'Jan Werkhoven' } }
 
     context 'when the record exists' do
-      before { put "/users/#{user_id}", params: valid_attributes }
+      before { put "/profiles/#{profile_id}", params: valid_attributes }
 
       it 'updates the record' do
         expect(response.body).to be_empty
@@ -97,9 +97,9 @@ RSpec.describe 'Users API', type: :request do
     end
   end
 
-  # Test suite for DELETE /users/:id
-  describe 'DELETE /users/:id' do
-    before { delete "/users/#{user_id}" }
+  # Test suite for DELETE /profiles/:id
+  describe 'DELETE /profiles/:id' do
+    before { delete "/profiles/#{profile_id}" }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)

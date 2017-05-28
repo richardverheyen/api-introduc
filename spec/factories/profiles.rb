@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: profiles
 #
 #  id         :integer          not null, primary key
 #  name       :string
@@ -13,7 +13,7 @@
 #
 
 FactoryGirl.define do
-  factory :user do
+  factory :profile do
     name { Faker::StarWars.character }
     lat { Faker::Number.number(2) }
     long { Faker::Number.number(2) }
