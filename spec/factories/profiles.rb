@@ -14,7 +14,6 @@
 
 FactoryGirl.define do
   factory :profile do
-    name { Faker::StarWars.character }
     lat { Faker::Number.number(2) }
     long { Faker::Number.number(2) }
     image { Faker::File.file_name('img') }

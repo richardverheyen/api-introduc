@@ -52,13 +52,13 @@ RSpec.describe 'Profiles API', type: :request do
   # Test suite for POST /profiles
   describe 'POST /profiles' do
     # valid payload
-    let(:valid_attributes) { { name: 'Richard Verheyen' , lat: '1', long: '2', image: '/img/richard.jpg', tagline: 'Lets get schwifty' } }
+    let(:valid_attributes) { { lat: '1', long: '2', image: '/img/richard.jpg', tagline: 'Lets get schwifty' } }
 
     context 'when the request is valid' do
       before { post '/profiles', params: valid_attributes }
 
       it 'creates a profile' do
-        expect(json['name']).to eq('Richard Verheyen')
+        expect(json['tagline']).to eq('Lets get schwifty')
       end
 
       it 'returns status code 201' do
@@ -67,7 +67,7 @@ RSpec.describe 'Profiles API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/profiles', params: { name: 'Foobar' } }
+      before { post '/profiles', params: { tagline: 'Foobar' } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -75,14 +75,14 @@ RSpec.describe 'Profiles API', type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match("{\"message\":\"Validation failed: Lat can't be blank, Long can't be blank, Image can't be blank, Tagline can't be blank\"}")
+          .to match("{\"message\":\"Validation failed: Lat can't be blank, Long can't be blank, Image can't be blank\"}")
       end
     end
   end
 
   # Test suite for PUT /profiles/:id
   describe 'PUT /profiles/:id' do
-    let(:valid_attributes) { { name: 'Jan Werkhoven' } }
+    let(:valid_attributes) { { tagline: 'Wubbalubbadubdub' } }
 
     context 'when the record exists' do
       before { put "/profiles/#{profile_id}", params: valid_attributes }
