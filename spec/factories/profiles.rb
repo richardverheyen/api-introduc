@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  name       :string
 #  lat        :float
-#  long       :float
+#  lng       :float
 #  image      :string
 #  tagline    :string
 #  created_at :datetime         not null
@@ -15,7 +15,7 @@
 FactoryGirl.define do
   factory :profile do
     lat { Faker::Number.number(2) }
-    long { Faker::Number.number(2) }
+    lng { Faker::Number.number(2) }
     image { Faker::File.file_name('img') }
     tagline { Faker::Lorem.sentence }
   end

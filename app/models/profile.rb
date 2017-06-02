@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  name       :string
 #  lat        :float
-#  long       :float
+#  lng       :float
 #  image      :string
 #  tagline    :string
 #  created_at :datetime         not null
@@ -16,5 +16,5 @@ class Profile < ApplicationRecord
   # model association
 
   # validations
-  validates_presence_of :lat, :long, :image, :tagline
+  validates_presence_of :lat, :lng, :image, :tagline
 end

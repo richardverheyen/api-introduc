@@ -37,7 +37,7 @@ class ProfilesController < ApplicationController
 
   def profile_params
     # whitelist params
-    params.permit(:lat, :long, :image, :tagline)
+    params.permit(:lat, :lng, :image, :tagline)
   end
 
   def set_profile

@@ -52,7 +52,7 @@ RSpec.describe 'Profiles API', type: :request do
   # Test suite for POST /profiles
   describe 'POST /profiles' do
     # valid payload
-    let(:valid_attributes) { { lat: '1', long: '2', image: '/img/richard.jpg', tagline: 'Lets get schwifty' } }
+    let(:valid_attributes) { { lat: '1', lng: '2', image: '/img/richard.jpg', tagline: 'Lets get schwifty' } }
 
     context 'when the request is valid' do
       before { post '/profiles', params: valid_attributes }

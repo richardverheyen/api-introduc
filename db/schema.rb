@@ -13,9 +13,8 @@
 ActiveRecord::Schema.define(version: 20170505181808) do
 
   create_table "profiles", force: :cascade do |t|
-    t.string "name"
     t.float "lat"
-    t.float "long"
+    t.float "lng"
     t.string "image"
     t.string "tagline"
     t.datetime "created_at", null: false
