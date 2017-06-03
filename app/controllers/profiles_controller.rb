@@ -10,8 +10,9 @@ class ProfilesController < ApplicationController
 
   # POST /profiles
   def create
+    # @profile = Profile.create!(profile_params)
+    @profile = Profile.create!(@attrs)
     binding.pry
-    @profile = Profile.create!(profile_params)
     json_response(@profile, :created)
   end
 

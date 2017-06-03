@@ -3,9 +3,8 @@
 # Table name: profiles
 #
 #  id         :integer          not null, primary key
-#  name       :string
 #  lat        :float
-#  lng       :float
+#  lng        :float
 #  image      :string
 #  tagline    :string
 #  created_at :datetime         not null
