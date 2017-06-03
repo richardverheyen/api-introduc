@@ -10,6 +10,7 @@ class ProfilesController < ApplicationController
 
   # POST /profiles
   def create
+    binding.pry
     @profile = Profile.create!(profile_params)
     json_response(@profile, :created)
   end
@@ -37,7 +38,7 @@ class ProfilesController < ApplicationController
 
   def profile_params
     # whitelist params
-    params.permit(:lat, :lng, :image, :tagline)
+    # params.permit(:lat, :lng, :image, :tagline)
   end
 
   def set_profile
