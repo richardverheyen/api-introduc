@@ -1,0 +1,12 @@
+{
+  "data": {
+    "id": "0",
+    "attributes": {
+      "image": "/img/scarjo.jpg",
+      "tagline": "This is your damned tagline sir!",
+      "lat": 55.9534227,
+      "lng": -3.1980106999999998
+    },
+    "type": "profiles"
+  }
+}
