@@ -10,10 +10,16 @@ class ProfilesController < ApplicationController
 
   # POST /profiles
   def create
-    # @profile = Profile.create!(profile_params)
-    @profile = Profile.create!(@attrs)
-    binding.pry
+    @attrs = params[:data][:attributes]
+    @profile = Profile.create(
+      tagline: @attrs[:tagline],
+      image: @attrs[:image],
+      lat: @attrs[:lat],
+      lng: @attrs[:lng]
+    )
+    # binding.pry
     json_response(@profile, :created)
+    # binding.pry
   end
 
   # GET /profiles/:id
